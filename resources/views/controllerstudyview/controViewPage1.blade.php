@@ -1,0 +1,1 @@
+<h1>This is Controller + view page</h1>
