@@ -84,5 +84,8 @@ Route::get('contropage5',[ControllerPracticePage::Class, 'methad4']);
 //Route::view('contact','layoutview.contectview');
 
 ////////////////// Layout templet inheritance /////////////////////
-Route::view('home','templetLayout.homeTempletLayout');
-Route::view('contact','templetLayout.contactTempletLayout');
+//Route::view('home','templetLayout.homeTempletLayout');
+//Route::view('contact','templetLayout.contactTempletLayout');
+
+////////////////////Image uploaded///////////////////////////
+Route::view('image','imageview.imageview');
