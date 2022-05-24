@@ -5,6 +5,7 @@ use App\Http\Controllers\ControllerPracticePage;//path of new create Controller
 use App\Http\Controllers\singleMethadController;//invokable controller (single mathod controller)
 use App\Http\Controllers\bladePractice;
 use App\Http\Controllers\IncludeController;
+use App\Http\Controllers\middlewareStudy;
 
 
 /*
@@ -88,4 +89,10 @@ Route::get('contropage5',[ControllerPracticePage::Class, 'methad4']);
 //Route::view('contact','templetLayout.contactTempletLayout');
 
 ////////////////////Image uploaded///////////////////////////
-Route::view('image','imageview.imageview');
+//Route::view('image','imageview.imageview');
+
+/////////////////////Middleware ///////////////////////////
+ Route:: get('home',[middlewareStudy::class,'home']);
+ Route:: get('deshbord',[middlewareStudy::class,'deshbord']);
+ Route:: get('about',[middlewareStudy::class,'about'])->middleware('Contruction');
+ Route:: get('help',[middlewareStudy::class,'help']);
