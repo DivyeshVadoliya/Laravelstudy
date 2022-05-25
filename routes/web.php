@@ -6,6 +6,7 @@ use App\Http\Controllers\singleMethadController;//invokable controller (single m
 use App\Http\Controllers\bladePractice;
 use App\Http\Controllers\IncludeController;
 use App\Http\Controllers\middlewareStudy;
+use App\Http\Controllers\RegistrationForm;
 
 
 /*
@@ -92,7 +93,12 @@ Route::get('contropage5',[ControllerPracticePage::Class, 'methad4']);
 //Route::view('image','imageview.imageview');
 
 /////////////////////Middleware ///////////////////////////
- Route:: get('home',[middlewareStudy::class,'home']);
- Route:: get('deshbord',[middlewareStudy::class,'deshbord']);
- Route:: get('about',[middlewareStudy::class,'about'])->middleware('Contruction');
- Route:: get('help',[middlewareStudy::class,'help']);
+ //Route:: get('home',[middlewareStudy::class,'home']);
+ //Route:: get('deshbord',[middlewareStudy::class,'deshbord']);
+ //Route:: get('about',[middlewareStudy::class,'about'])->middleware('Contruction');
+ //Route:: get('help',[middlewareStudy::class,'help']);
+
+ ////////////////////Form Data ////////////////////////
+Route::get('login',[RegistrationForm::class,'signin']);
+Route::post('login',[RegistrationForm::class,'signup']);
+
