@@ -19,7 +19,8 @@ class RegistrationForm extends Controller
     	//print_r($request->input('name')); //printonly name key valyu 
     	//print_r($request-> all());		//print all data from request array
     	//print_r($request->name);
-    	//$request->flash();//setion request all data
+        // $input=$request->flash();//setion request all data
+         //dd($input);
     	/*$request->flashOnly(['name','email']);//setion request only name and email value get 
     	print_r($request->old('name'));
     	print_r($request->old('email'));

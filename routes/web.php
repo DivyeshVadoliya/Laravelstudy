@@ -7,6 +7,7 @@ use App\Http\Controllers\bladePractice;
 use App\Http\Controllers\IncludeController;
 use App\Http\Controllers\middlewareStudy;
 use App\Http\Controllers\RegistrationForm;
+use App\Http\Controllers\DatabaseStudentController;
 
 
 /*
@@ -102,3 +103,6 @@ Route::get('contropage5',[ControllerPracticePage::Class, 'methad4']);
 Route::get('login',[RegistrationForm::class,'signin']);
 Route::post('login',[RegistrationForm::class,'signup']);
 
+/////////////////////Registration form with database///////////////////
+Route::get('form',[DatabaseStudentController::class,'studentform']);
+Route::post('form',[DatabaseStudentController::class,'Displayform']);
