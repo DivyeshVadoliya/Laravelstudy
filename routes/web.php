@@ -9,6 +9,7 @@ use App\Http\Controllers\middlewareStudy;
 use App\Http\Controllers\RegistrationForm;
 use App\Http\Controllers\DatabaseStudentController;
 use App\Http\Controllers\databaseQuaryKeyword;
+use App\Http\Controllers\nameRouteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -108,4 +109,11 @@ Route::get('contropage5',[ControllerPracticePage::Class, 'methad4']);
 //Route::post('form',[DatabaseStudentController::class,'Displayform']);
 
 ////////////////Database Squary //////////////////////////////////////
-Route::get('database',[databaseQuaryKeyword::class,'databasekeyword']);
+//Route::get('database',[databaseQuaryKeyword::class,'databasekeyword']);
+
+////////////////////Name Routes///////////////////////////////////////
+Route::get('home',[nameRouteController::class,'home'])->name('homeroute');
+Route::get('dashbord',[nameRouteController::class,'dashbord'])->name('dashbordroute');
+Route::get('admin',[nameRouteController::class,'admin'])->name('adminroute');
+Route::get('about',[nameRouteController::class,'about'])->name('aboutroute');
+
