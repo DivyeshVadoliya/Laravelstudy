@@ -1,16 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ControllerPracticePage;//path of new create Controller
-use App\Http\Controllers\singleMethadController;//invokable controller (single mathod controller)
-use App\Http\Controllers\bladePractice;
-use App\Http\Controllers\IncludeController;
-use App\Http\Controllers\middlewareStudy;
-use App\Http\Controllers\RegistrationForm;
-use App\Http\Controllers\DatabaseStudentController;
-use App\Http\Controllers\databaseQuaryKeyword;
-use App\Http\Controllers\nameRouteController;
-
+use App\Http\Controllers\auth_controller;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,98 +13,14 @@ use App\Http\Controllers\nameRouteController;
 |
 */
 
- Route::get('/', function () {
-     return view('welcome');
- });
+Route::get('/', function () {
+    return view('welcome');
+})->name('homepage');
 
-////////////////////   View  /////////////////////////
-/*
-Route::get('userurl', function () {
-    return view('studyview.user');//studeyview folder in that user file run
-});
-Route::get('admin',function(){
-	return view('studyview.admindata',['name'=>'Divyesh','id'=>'042']); 
-});
-Route::get('login/{id}',function($fun_id){
-	return view('studyview.login',['view_id'=>$fun_id]);
-});
-Route::get('data/{id}/{name}/{data}',function($fun_id, $fun_name, $fun_data){
-	return view('studyview.data',['view_id'=>$fun_id, 'view_name'=>$fun_name, 'view_data'=>$fun_data ]);
-});
-Route::get('myabc/{name}',function($fun_myname){
-	return view('studyview.abcpage',['view_myname'=>$fun_myname]);
-})->where('name','[A-Za-z]+');
-Route::get('post/{name}/{id}',function($fun_postnm, $fun_postid){
-	return view('studyview.postpage',['view_postnm'=>$fun_postnm, 'view_postid'=>$fun_postid]);
-})->where('name','[A-Za-z]+')->where('id','[0-9]+');
-	// other type also syntax ->whereAlpha('name')->whereNumber('id');
-Route::get('urladmin/{name?}',function($fun_num='Null'){
-	return view('studyview.blanckpage',['view_num'=>$fun_num]);
-});
-Route::view('student','studyview.student');
-Route::view('model','studyview.model');
-// Route::redirect('student','model');
-// Route::redirect('student','model',301);
-// Route::permanentRedirect('model','student');
-/* Route::fallback(function(){
- 	return view('studyview.defult');
- });*/
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
 
- ////////////////////////Controller////////////////////////////////////////
-/*
-Route::get('contropage1',[ControllerPracticePage::Class, 'methad1']);
-Route::get('contropage2',[ControllerPracticePage::Class, 'methad2']);
-Route::get('contropage3/{data}',[ControllerPracticePage::Class, 'methad3']);
-Route::get('contropage4',singleMethadController::Class);
-Route::get('contropage5',[ControllerPracticePage::Class, 'methad4']);
-*/
+require __DIR__.'/auth.php';
 
-///////////////////////////blade///////////////////////////////////////////
-
-//Route::get('blade', [bladePractice::Class,'show']);
-//Route::get('blade', [bladePractice::Class,'show1']);
-
-/////////////////////////// Include /////////////////////////////////////
-
-//Route::get('Include', [IncludeController::Class,'IncludePractics']);
-
-/////////////////////////Component////////////////////////////////////
-//Route::view('compPage','studyComponentPage');
-//Route::view('anonymos','components.anonymosStudy');
-
-//Route::view('slotPage','alert');
-
-/////////////////////////Layout////////////////////////////////////
-//Route::view('home','layoutview.layoutview');
-//Route::view('contact','layoutview.contectview');
-
-////////////////// Layout templet inheritance /////////////////////
-//Route::view('home','templetLayout.homeTempletLayout');
-//Route::view('contact','templetLayout.contactTempletLayout');
-
-////////////////////Image uploaded///////////////////////////
-//Route::view('image','imageview.imageview');
-
-/////////////////////Middleware ///////////////////////////
- //Route:: get('home',[middlewareStudy::class,'home']);
- //Route:: get('deshbord',[middlewareStudy::class,'deshbord']);
- //Route:: get('about',[middlewareStudy::class,'about'])->middleware('Contruction');
- //Route:: get('help',[middlewareStudy::class,'help']);
-
- ////////////////////Form Data ////////////////////////
-//Route::get('login',[RegistrationForm::class,'signin']);
-//Route::post('login',[RegistrationForm::class,'signup']);
-
-/////////////////////Registration form with database///////////////////
-//Route::get('form',[DatabaseStudentController::class,'studentform']);
-//Route::post('form',[DatabaseStudentController::class,'Displayform']);
-
-////////////////Database Squary //////////////////////////////////////
-//Route::get('database',[databaseQuaryKeyword::class,'databasekeyword']);
-
-////////////////////Name Routes///////////////////////////////////////
-Route::get('home',[nameRouteController::class,'home'])->name('homeroute');
-Route::get('dashbord',[nameRouteController::class,'dashbord'])->name('dashbordroute');
-Route::get('admin',[nameRouteController::class,'admin'])->name('adminroute');
-Route::get('about',[nameRouteController::class,'about'])->name('aboutroute');
-
+Route::get('/check',[auth_controller::class,'auth_login_check']);
